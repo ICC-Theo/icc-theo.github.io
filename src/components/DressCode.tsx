@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DressCode: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const womenOutfits = [
+    { src: '/Images/Sample_Women_Outfit1.jpg', alt: 'Women White Outfit 1' },
+    { src: '/Images/Sample_Women_Outfit2.jpg', alt: 'Women White Outfit 2' },
+  ];
+
+  const menOutfits = [
+    { src: '/Images/Sample_Men_Outfit1.jpg', alt: 'Men White Outfit 1' },
+    { src: '/Images/Sample_Men_Outfit2.jpg', alt: 'Men White Outfit 2' },
+  ];
+
   return (
     <section id="dress-code" className="section dress-code-section">
       <div className="container dress-code-content">
@@ -25,18 +37,31 @@ const DressCode: React.FC = () => {
                 <span className="color-swatch" style={{ background: '#FFFEF9' }} title="Ivory"></span>
                 <span className="color-swatch" style={{ background: '#FAF8F5' }} title="Off-White"></span>
                 <span className="color-swatch" style={{ background: '#F5F5F5' }} title="Pearl"></span>
-                <span className="color-swatch" style={{ background: '#FFFDD0' }} title="Cream"></span>
-                <span className="color-swatch" style={{ background: '#FFF8E7' }} title="Champagne"></span>
               </div>
             </div>
           </div>
 
-          {/* Suggestions */}
+          {/* Outfit Examples with Images */}
           <div className="dress-suggestions">
             {/* For Ladies */}
             <div className="dress-code-card suggestion-card">
               <div className="suggestion-icon">👗</div>
               <h3 className="suggestion-title">For Ladies</h3>
+              <div className="outfit-images">
+                {womenOutfits.map((outfit, index) => (
+                  <div 
+                    key={index} 
+                    className="outfit-image-container"
+                    onClick={() => setSelectedImage(outfit.src)}
+                  >
+                    <img 
+                      src={outfit.src} 
+                      alt={outfit.alt} 
+                      className="outfit-image"
+                    />
+                  </div>
+                ))}
+              </div>
               <ul className="suggestion-list">
                 <li>White cocktail dress</li>
                 <li>Elegant white maxi dress</li>
@@ -50,6 +75,21 @@ const DressCode: React.FC = () => {
             <div className="dress-code-card suggestion-card">
               <div className="suggestion-icon">👔</div>
               <h3 className="suggestion-title">For Gentlemen</h3>
+              <div className="outfit-images">
+                {menOutfits.map((outfit, index) => (
+                  <div 
+                    key={index} 
+                    className="outfit-image-container"
+                    onClick={() => setSelectedImage(outfit.src)}
+                  >
+                    <img 
+                      src={outfit.src} 
+                      alt={outfit.alt} 
+                      className="outfit-image"
+                    />
+                  </div>
+                ))}
+              </div>
               <ul className="suggestion-list">
                 <li>White polo or dress shirt</li>
                 <li>White linen blazer (optional)</li>
@@ -60,6 +100,16 @@ const DressCode: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <div className="image-modal-overlay" onClick={() => setSelectedImage(null)}>
+            <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close-btn" onClick={() => setSelectedImage(null)}>×</button>
+              <img src={selectedImage} alt="Outfit Example" className="modal-image" />
+            </div>
+          </div>
+        )}
 
         {/* Note */}
         <div className="dress-code-note">

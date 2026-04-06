@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 
 const Gallery: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Placeholder gallery items - can be replaced with actual images later
+  // Gallery photos of Enchong
   const galleryItems = [
-    { id: 1, placeholder: '🌅', caption: 'Memory 1' },
-    { id: 2, placeholder: '🎂', caption: 'Memory 2' },
-    { id: 3, placeholder: '👨‍👩‍👧‍👦', caption: 'Memory 3' },
-    { id: 4, placeholder: '🎉', caption: 'Memory 4' },
-    { id: 5, placeholder: '🌴', caption: 'Memory 5' },
-    { id: 6, placeholder: '❤️', caption: 'Memory 6' },
+    { id: 1, src: '/Gallery/Photo1.jpg', caption: 'Memory 1' },
+    { id: 2, src: '/Gallery/Photo2.jpg', caption: 'Memory 2' },
+    { id: 3, src: '/Gallery/Photo3.jpg', caption: 'Memory 3' },
+    { id: 4, src: '/Gallery/Photo4.jpg', caption: 'Memory 4' },
+    { id: 5, src: '/Gallery/Photo5.jpg', caption: 'Memory 5' },
+    { id: 6, src: '/Gallery/Photo6.jpg', caption: 'Memory 6' },
+    { id: 7, src: '/Gallery/Photo7.jpg', caption: 'Memory 7' },
+    { id: 8, src: '/Gallery/Photo8.jpg', caption: 'Memory 8' },
+    { id: 9, src: '/Gallery/Photo9.jpg', caption: 'Memory 9' },
+    { id: 10, src: '/Gallery/Photo10.jpg', caption: 'Memory 10' },
   ];
 
   return (
@@ -26,21 +30,59 @@ const Gallery: React.FC = () => {
             <div 
               key={item.id} 
               className="gallery-item"
-              onClick={() => setSelectedImage(item.id)}
+              onClick={() => setSelectedImage(item.src)}
             >
-              <div className="gallery-placeholder">
-                <span className="placeholder-emoji">{item.placeholder}</span>
-                <p className="placeholder-text">Photo Coming Soon</p>
+              <img 
+                src={item.src} 
+                alt={item.caption}
+                className="gallery-image"
+                loading="lazy"
+              />
+              <div className="gallery-overlay">
+                <span className="view-icon">🔍</span>
               </div>
-              <div className="gallery-caption">{item.caption}</div>
             </div>
           ))}
         </div>
 
         <div className="gallery-cta">
-          <p>📸 More photos will be added here soon!</p>
+          <p>✨ Celebrating 50 years of beautiful memories! ✨</p>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="gallery-modal-overlay" onClick={() => setSelectedImage(null)}>
+          <div className="gallery-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="gallery-modal-close" onClick={() => setSelectedImage(null)}>×</button>
+            <img src={selectedImage} alt="Gallery" className="gallery-modal-image" />
+            <div className="gallery-modal-nav">
+              <button 
+                className="nav-btn prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = galleryItems.findIndex(item => item.src === selectedImage);
+                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : galleryItems.length - 1;
+                  setSelectedImage(galleryItems[prevIndex].src);
+                }}
+              >
+                ❮
+              </button>
+              <button 
+                className="nav-btn next"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = galleryItems.findIndex(item => item.src === selectedImage);
+                  const nextIndex = currentIndex < galleryItems.length - 1 ? currentIndex + 1 : 0;
+                  setSelectedImage(galleryItems[nextIndex].src);
+                }}
+              >
+                ❯
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

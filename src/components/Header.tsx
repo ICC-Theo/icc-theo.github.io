@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { validateGuestId, loadGuestData } from '../services/guestService';
 
 const Header: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -6,17 +7,40 @@ const Header: React.FC = () => {
   const [error, setError] = useState('');
   const [isOpening, setIsOpening] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load guest data on component mount
+  useEffect(() => {
+    const initializeData = async () => {
+      await loadGuestData();
+      setIsLoading(false);
+    };
+    initializeData();
+  }, []);
 
   // Check if GuestID exists in URL on component mount
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestIdFromUrl = urlParams.get('GuestID');
+    const checkUrlGuestId = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestIdFromUrl = urlParams.get('GuestID');
+      
+      if (guestIdFromUrl) {
+        // Validate the GuestID from URL
+        const isValid = await validateGuestId(guestIdFromUrl);
+        if (isValid) {
+          setIsOpening(true);
+        } else {
+          // If invalid, show modal to enter correct ID
+          setError('Invalid Guest ID in URL. Please enter a valid Guest ID.');
+          setShowModal(true);
+        }
+      }
+    };
     
-    if (guestIdFromUrl) {
-      // If GuestID exists in URL, show the open invitation immediately
-      setIsOpening(true);
+    if (!isLoading) {
+      checkUrlGuestId();
     }
-  }, []);
+  }, [isLoading]);
 
   const handleInvitationClick = () => {
     // Don't show modal if envelope is already opening
@@ -52,13 +76,21 @@ const Header: React.FC = () => {
     setIsValidating(true);
     setError('');
     
-    // For now, accept any valid 5-letter code
-    // Close modal and start opening animation
+    // Validate the GuestID against the CSV
+    const isValid = await validateGuestId(guestId);
+    
+    if (!isValid) {
+      setIsValidating(false);
+      setError('Invalid Guest ID. Please check your invitation and try again.');
+      return;
+    }
+    
+    // Valid GuestID - Close modal and start opening animation
     setShowModal(false);
     setIsValidating(false);
     setIsOpening(true);
     
-    console.log('🎬 Starting invitation animation...');
+    console.log('🎬 Valid Guest ID! Starting invitation animation...');
     
     // Wait 5 seconds to show the invitation, then redirect with Guest ID
     setTimeout(() => {

@@ -16,10 +16,10 @@ An elegant 50th birthday celebration website built with React and TypeScript.
 - 📱 Fully responsive (works on mobile, tablet, and desktop)
 - 🔐 Guest ID authentication system
 - 📅 Event schedule display
-- 🗺️ Venue information with directions
-- 👗 Dress code guide (All White Attire)
-- ✅ RSVP system with local storage
-- 📸 Photo gallery (ready for images)
+- 🗺️ Venue information with Google Maps
+- 👗 Dress code guide with outfit examples (All White Attire)
+- ✅ RSVP system with Google Sheets integration
+- 📸 Photo gallery
 - ⏰ Countdown timer to the celebration
 
 ## Theme Colors
@@ -34,6 +34,7 @@ An elegant 50th birthday celebration website built with React and TypeScript.
 - React 19
 - TypeScript
 - CSS3 (no external UI libraries)
+- Google Sheets API (for guest list & RSVP)
 
 ## Getting Started
 
@@ -55,7 +56,11 @@ An elegant 50th birthday celebration website built with React and TypeScript.
    npm install
    ```
 
-3. Start the development server:
+3. (Optional) Set up Google Sheets integration:
+   - See [GOOGLE_SHEETS_SETUP.md](GOOGLE_SHEETS_SETUP.md) for detailed instructions
+   - Copy `.env.example` to `.env` and fill in your values
+
+4. Start the development server:
    ```bash
    npm start
    ```

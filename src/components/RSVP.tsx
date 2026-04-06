@@ -1,48 +1,57 @@
 import React, { useState, useEffect } from 'react';
+import { saveRSVPResponse, checkExistingRSVP, RSVPData } from '../services/guestService';
 
 const RSVP: React.FC = () => {
   const [guestId, setGuestId] = useState<string | null>(null);
-  const [attendeeCount, setAttendeeCount] = useState<number>(1);
+  const [adultCount, setAdultCount] = useState<number>(1);
+  const [kidsCount, setKidsCount] = useState<number>(0);
   const [attendeeNames, setAttendeeNames] = useState<string[]>(['']);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [showDeclineConfirmation, setShowDeclineConfirmation] = useState(false);
   const [hasResponded, setHasResponded] = useState(false);
   const [responseType, setResponseType] = useState<'attending' | 'declined' | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('GuestID');
-    if (id) {
-      setGuestId(id);
-      
-      // Check if already responded (from localStorage)
-      const storedResponse = localStorage.getItem(`rsvp_${id}`);
-      if (storedResponse) {
-        const response = JSON.parse(storedResponse);
-        setHasResponded(true);
-        setResponseType(response.attending === 'Yes' ? 'attending' : 'declined');
-        if (response.attendeeNames) {
-          setAttendeeNames(response.attendeeNames);
-          setAttendeeCount(response.attendeeNames.length);
+    const loadExistingResponse = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('GuestID');
+      if (id) {
+        setGuestId(id);
+        
+        // Check if already responded (from localStorage or Google Sheets)
+        const storedResponse = await checkExistingRSVP(id);
+        if (storedResponse) {
+          setHasResponded(true);
+          setResponseType(storedResponse.attending === 'Yes' ? 'attending' : 'declined');
+          if (storedResponse.attendeeNames && storedResponse.attendeeNames.length > 0) {
+            setAttendeeNames(storedResponse.attendeeNames);
+            setAdultCount(storedResponse.adultCount || storedResponse.attendeeNames.length);
+            setKidsCount(storedResponse.kidsCount || 0);
+          }
         }
       }
-    }
+      setIsLoading(false);
+    };
+    
+    loadExistingResponse();
   }, []);
 
-  const handleAttendeeCountChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const count = parseInt(e.target.value);
-    setAttendeeCount(count);
-    // Adjust attendee names array
+  // Calculate total attendees
+  const totalAttendees = adultCount + kidsCount;
+
+  // Update attendee names array when counts change
+  useEffect(() => {
     const newNames = [...attendeeNames];
-    while (newNames.length < count) {
+    while (newNames.length < totalAttendees) {
       newNames.push('');
     }
-    while (newNames.length > count) {
+    while (newNames.length > totalAttendees) {
       newNames.pop();
     }
     setAttendeeNames(newNames);
-  };
+  }, [totalAttendees]);
 
   const handleNameChange = (index: number, value: string) => {
     const newNames = [...attendeeNames];
@@ -61,15 +70,19 @@ const RSVP: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Store in localStorage
-      const response = {
-        guestId: guestId,
+      // Create RSVP data
+      const rsvpData: RSVPData = {
+        guestId: guestId || '',
+        guestName: attendeeNames[0] || 'Guest',
         attendeeNames: attendeeNames.filter(name => name.trim()),
+        adultCount: adultCount,
+        kidsCount: kidsCount,
         attending: 'Yes',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toLocaleString()
       };
       
-      localStorage.setItem(`rsvp_${guestId}`, JSON.stringify(response));
+      // Save using the guest service (now async)
+      await saveRSVPResponse(rsvpData);
       
       setSubmitSuccess(true);
       setHasResponded(true);
@@ -88,14 +101,17 @@ const RSVP: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const response = {
-        guestId: guestId,
+      const rsvpData: RSVPData = {
+        guestId: guestId || '',
+        guestName: 'Guest',
         attendeeNames: [],
+        adultCount: 0,
+        kidsCount: 0,
         attending: 'No',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toLocaleString()
       };
       
-      localStorage.setItem(`rsvp_${guestId}`, JSON.stringify(response));
+      await saveRSVPResponse(rsvpData);
       
       setHasResponded(true);
       setResponseType('declined');
@@ -106,6 +122,17 @@ const RSVP: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <section id="rsvp" className="section rsvp-section">
+        <div className="container rsvp-container">
+          <h1 className="section-main-title">RSVP</h1>
+          <p className="section-subtitle">Loading...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="rsvp" className="section rsvp-section">
@@ -129,7 +156,9 @@ const RSVP: React.FC = () => {
             <h3>You're on the guest list!</h3>
             <p>We're excited to celebrate with you!</p>
             <div className="confirmed-details">
-              <strong>Attendees:</strong> {attendeeNames.join(', ')}
+              <strong>Attendees ({adultCount} adults{kidsCount > 0 ? `, ${kidsCount} kids` : ''}):</strong>
+              <br />
+              {attendeeNames.join(', ')}
             </div>
             <button 
               className="rsvp-update-btn"
@@ -160,29 +189,47 @@ const RSVP: React.FC = () => {
         {!hasResponded && (
           <div className="rsvp-form-container">
             <form onSubmit={handleSubmit} className="rsvp-form">
-              <div className="form-group">
-                <label htmlFor="attendeeCount">Number of Guests Attending</label>
-                <select 
-                  id="attendeeCount" 
-                  value={attendeeCount} 
-                  onChange={handleAttendeeCountChange}
-                  className="form-select"
-                >
-                  {[1, 2, 3, 4, 5].map(num => (
-                    <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
-                  ))}
-                </select>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="adultCount">Number of Adults</label>
+                  <select 
+                    id="adultCount" 
+                    value={adultCount} 
+                    onChange={(e) => setAdultCount(parseInt(e.target.value))}
+                    className="form-select"
+                  >
+                    {[1, 2, 3, 4, 5].map(num => (
+                      <option key={num} value={num}>{num} {num === 1 ? 'Adult' : 'Adults'}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="kidsCount">Number of Kids</label>
+                  <select 
+                    id="kidsCount" 
+                    value={kidsCount} 
+                    onChange={(e) => setKidsCount(parseInt(e.target.value))}
+                    className="form-select"
+                  >
+                    {[0, 1, 2, 3, 4, 5].map(num => (
+                      <option key={num} value={num}>{num} {num === 1 ? 'Kid' : 'Kids'}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="form-group">
-                <label>Guest Names</label>
+                <label>Guest Names ({totalAttendees} total)</label>
                 {attendeeNames.map((name, index) => (
                   <input
                     key={index}
                     type="text"
                     value={name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
-                    placeholder={`Guest ${index + 1} Full Name`}
+                    placeholder={index < adultCount 
+                      ? `Adult ${index + 1} Full Name` 
+                      : `Kid ${index - adultCount + 1} Full Name`}
                     className="form-input"
                     required
                   />
