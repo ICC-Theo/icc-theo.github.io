@@ -1431,13 +1431,13 @@ body {
 @media (max-width: 700px) {
   .floating-photo.left {
     left: 0;
-    top: 17%;
+    top: 8%;
     transform: rotate(-5deg);
   }
   
   .floating-photo.right {
     right: 0;
-    top: 17%;
+    top: 8%;
     transform: rotate(5deg);
   }
   
@@ -1462,12 +1462,12 @@ body {
 @media (max-width: 480px) {
   .floating-photo.left {
     left: 0;
-    top: 15%;
+    top: 6%;
   }
   
   .floating-photo.right {
     right: 0;
-    top: 15%;
+    top: 6%;
   }
   
   .floating-photo .photo-frame {
