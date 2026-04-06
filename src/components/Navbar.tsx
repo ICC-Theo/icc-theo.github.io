@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
       <div className="navbar-container">
         <div className={`navbar-brand ${activeSection === 'header' ? 'active' : ''}`}>
           <a href="#" onClick={handleBrandClick}>
-            <span className="brand-text">Melecio's 50th</span>
+            <span className="brand-text">Enchong's 50th</span>
             <span className="brand-date">May 1, 2026</span>
           </a>
         </div>

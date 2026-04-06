@@ -72,7 +72,7 @@ const Header: React.FC = () => {
       <header className={`header ${isOpening ? 'header-with-nav' : ''}`}>
         <div className="header-content">
           <div className="celebration-badge">50th</div>
-          <h1>MELECIO LOZADA</h1>
+          <h1>ENCHONG</h1>
           <p className="header-subtitle">Golden Birthday Celebration</p>
           <p className="header-date">05.01.2026</p>
           

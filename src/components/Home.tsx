@@ -9,8 +9,7 @@ const Home: React.FC = () => {
           <div className="celebration-card">
             <div className="summer-decoration top">🌺 ☀️ 🌺</div>
             <p className="celebration-header">You are cordially invited to</p>
-            <h1 className="celebrant-name">MELECIO</h1>
-            <p className="and-text">LOZADA's</p>
+            <h1 className="celebrant-name">ENCHONG'S</h1>
             <div className="age-badge">
               <span className="age-number">50</span>
               <span className="age-text">th</span>

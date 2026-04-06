@@ -1,10 +1,10 @@
-# Melecio's 50th Birthday Celebration Website 🎉🌴
+# Enchong's 50th Birthday Celebration Website 🎉🌴
 
 A summer-themed 50th birthday celebration website built with React and TypeScript.
 
 ## Event Details
 
-- **Celebrant**: Melecio Lozada
+- **Celebrant**: Enchong
 - **Date**: May 1, 2026
 - **Time**: 3:00 PM
 - **Venue**: Villa Katharina Resort, Brgy Maugat, Tanauan City, Batangas

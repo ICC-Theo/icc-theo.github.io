@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-celebration">
           <span className="footer-emoji">🌺</span>
-          <h3>Melecio's 50th Birthday Celebration</h3>
+          <h3>Enchong's 50th Birthday Celebration</h3>
           <span className="footer-emoji">🌺</span>
         </div>
         <p className="footer-date">May 1, 2026 • Villa Katharina Resort</p>
