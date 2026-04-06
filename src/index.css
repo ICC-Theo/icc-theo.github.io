@@ -1367,12 +1367,12 @@ body {
     0 4px 15px rgba(0, 0, 0, 0.15),
     0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  max-width: 400px;
+  max-width: 372px;
 }
 
 .photo-frame img {
-  width: 360px;
-  height: 450px;
+  width: 335px;
+  height: 418px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -1397,11 +1397,11 @@ body {
   }
   .photo-frame {
     padding: 10px 10px 32px 10px;
-    max-width: 280px;
+    max-width: 260px;
   }
   .photo-frame img {
-    width: 250px;
-    height: 320px;
+    width: 233px;
+    height: 298px;
   }
   .photo-caption {
     font-size: 1rem;
@@ -1417,11 +1417,11 @@ body {
   }
   .photo-frame {
     padding: 8px 8px 28px 8px;
-    max-width: 200px;
+    max-width: 186px;
   }
   .photo-frame img {
-    width: 180px;
-    height: 230px;
+    width: 167px;
+    height: 214px;
   }
   .photo-caption {
     font-size: 0.85rem;
@@ -1431,24 +1431,24 @@ body {
 @media (max-width: 700px) {
   .floating-photo.left {
     left: 0;
-    top: 12%;
+    top: 17%;
     transform: rotate(-5deg);
   }
   
   .floating-photo.right {
     right: 0;
-    top: 12%;
+    top: 17%;
     transform: rotate(5deg);
   }
   
   .floating-photo .photo-frame {
     padding: 6px 6px 24px 6px;
-    max-width: 160px;
+    max-width: 149px;
   }
   
   .floating-photo .photo-frame img {
-    width: 145px;
-    height: 220px;
+    width: 135px;
+    height: 205px;
     object-fit: cover;
     object-position: top center;
   }
@@ -1462,22 +1462,22 @@ body {
 @media (max-width: 480px) {
   .floating-photo.left {
     left: 0;
-    top: 10%;
+    top: 15%;
   }
   
   .floating-photo.right {
     right: 0;
-    top: 10%;
+    top: 15%;
   }
   
   .floating-photo .photo-frame {
     padding: 5px 5px 20px 5px;
-    max-width: 140px;
+    max-width: 130px;
   }
   
   .floating-photo .photo-frame img {
-    width: 125px;
-    height: 190px;
+    width: 116px;
+    height: 177px;
   }
   
   .floating-photo .photo-caption {
