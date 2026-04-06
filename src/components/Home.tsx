@@ -7,7 +7,7 @@ const Home: React.FC = () => {
         <div className="invitation-cards-wrapper">
           {/* Main Celebration Card */}
           <div className="celebration-card">
-            <div className="summer-decoration top">🌺 ☀️ 🌺</div>
+            <div className="summer-decoration top">✨ 🤍 ✨</div>
             <p className="celebration-header">You are cordially invited to</p>
             <h1 className="celebrant-name">ENCHONG'S</h1>
             <div className="age-badge">
@@ -16,15 +16,15 @@ const Home: React.FC = () => {
             </div>
             <p className="celebration-type">Birthday Celebration</p>
             <p className="celebration-theme">
-              "50 Years of Memories"
+              "50 Years of Blessings"
             </p>
-            <div className="summer-decoration bottom">🌴 🌊 🌴</div>
+            <div className="summer-decoration bottom">🤍 ✨ 🤍</div>
           </div>
           
           {/* Save the Date Card */}
           <div className="celebration-card save-date-card">
             <h1 className="std-header">Save the Date</h1>
-            <div className="summer-icon-header">☀️</div>
+            <div className="summer-icon-header">🎂</div>
             <h2 className="std-month">May</h2>
             <div className="std-datetime">
               <span className="std-day">Thursday</span>
@@ -36,9 +36,9 @@ const Home: React.FC = () => {
             <p className="std-location">Villa Katharina Resort</p>
             <p className="std-address">Brgy Maugat, Tanauan City, Batangas</p>
             <div className="summer-footer">
-              <span>🌺</span>
-              <span>Summer Party Theme</span>
-              <span>🌺</span>
+              <span>🤍</span>
+              <span>All White Theme</span>
+              <span>🤍</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
-# Enchong's 50th Birthday Celebration Website 🎉🌴
+# Enchong's 50th Birthday Celebration Website �✨
 
-A summer-themed 50th birthday celebration website built with React and TypeScript.
+An elegant 50th birthday celebration website built with React and TypeScript.
 
 ## Event Details
 
@@ -8,19 +8,26 @@ A summer-themed 50th birthday celebration website built with React and TypeScrip
 - **Date**: May 1, 2026
 - **Time**: 3:00 PM
 - **Venue**: Villa Katharina Resort, Brgy Maugat, Tanauan City, Batangas
-- **Theme**: Summer Party - "50 Years of Memories"
+- **Theme**: All White Elegant - "50 Years of Blessings"
 
 ## Features
 
-- 🎨 Summer-themed design with tropical colors
+- 🎨 Elegant white & gold design with textured background
 - 📱 Fully responsive (works on mobile, tablet, and desktop)
 - 🔐 Guest ID authentication system
 - 📅 Event schedule display
 - 🗺️ Venue information with directions
-- 👗 Dress code guide (Summer Party Attire)
+- 👗 Dress code guide (All White Attire)
 - ✅ RSVP system with local storage
 - 📸 Photo gallery (ready for images)
 - ⏰ Countdown timer to the celebration
+
+## Theme Colors
+
+- **Primary Brown**: #8f5e36
+- **Gold Accent**: #c9a227
+- **Cream Background**: #f5f3f0
+- **Beige Accents**: #d4c4a8
 
 ## Tech Stack
 

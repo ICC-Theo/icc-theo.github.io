@@ -84,14 +84,14 @@ const Header: React.FC = () => {
                 onClick={handleInvitationClick}
                 style={{ cursor: isOpening ? 'default' : 'pointer' }}
               >
-                <div className="card-decoration top-left">🌺</div>
-                <div className="card-decoration top-right">🌴</div>
+                <div className="card-decoration top-left">✨</div>
+                <div className="card-decoration top-right">🤍</div>
                 <div className="card-content">
                   <span className="tap-text">Tap to Open</span>
-                  <div className="summer-icon">☀️</div>
+                  <div className="summer-icon">🎂</div>
                 </div>
-                <div className="card-decoration bottom-left">🌊</div>
-                <div className="card-decoration bottom-right">🌸</div>
+                <div className="card-decoration bottom-left">🤍</div>
+                <div className="card-decoration bottom-right">✨</div>
               </div>
               
               {/* Open Invitation Contents */}
@@ -99,10 +99,10 @@ const Header: React.FC = () => {
                 <div className="invitation-contents">
                   <div className="invitation-objects">
                     <div className="party-elements">
-                      <span className="party-icon sun">☀️</span>
-                      <span className="party-icon palm">🌴</span>
-                      <span className="party-icon flower">🌺</span>
-                      <span className="party-icon umbrella">⛱️</span>
+                      <span className="party-icon sun">✨</span>
+                      <span className="party-icon palm">🎉</span>
+                      <span className="party-icon flower">🎂</span>
+                      <span className="party-icon umbrella">🥂</span>
                     </div>
                     <div className="invitation-message">
                       <p>You're Invited!</p>

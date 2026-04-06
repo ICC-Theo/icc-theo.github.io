@@ -6,27 +6,27 @@ const DressCode: React.FC = () => {
       <div className="container dress-code-content">
         <h1 className="section-main-title">DRESS CODE</h1>
         <p className="section-subtitle">
-          Get ready for a Summer Party! Here's what to wear:
+          Join us in celebrating with an elegant All White theme!
         </p>
 
         <div className="dress-code-wrapper">
-          {/* Summer Casual Theme */}
+          {/* All White Theme */}
           <div className="dress-code-card main-theme">
-            <div className="theme-icon">☀️</div>
-            <h2 className="theme-title">Summer Party Attire</h2>
+            <div className="theme-icon">🤍</div>
+            <h2 className="theme-title">All White Attire</h2>
             <p className="theme-description">
-              Bright, comfortable, and festive summer wear
+              Elegant, fresh, and sophisticated white ensemble
             </p>
             
             <div className="color-palette">
-              <h4>Suggested Colors</h4>
+              <h4>Accepted Shades</h4>
               <div className="colors">
-                <span className="color-swatch" style={{ background: '#FF6B6B' }} title="Coral"></span>
-                <span className="color-swatch" style={{ background: '#20B2AA' }} title="Teal"></span>
-                <span className="color-swatch" style={{ background: '#FFD93D' }} title="Sunny Yellow"></span>
-                <span className="color-swatch" style={{ background: '#6BCB77' }} title="Fresh Green"></span>
-                <span className="color-swatch" style={{ background: '#4D96FF' }} title="Ocean Blue"></span>
-                <span className="color-swatch" style={{ background: '#FF8FB1' }} title="Pink"></span>
+                <span className="color-swatch" style={{ background: '#FFFFFF', border: '1px solid #ddd' }} title="Pure White"></span>
+                <span className="color-swatch" style={{ background: '#FFFEF9' }} title="Ivory"></span>
+                <span className="color-swatch" style={{ background: '#FAF8F5' }} title="Off-White"></span>
+                <span className="color-swatch" style={{ background: '#F5F5F5' }} title="Pearl"></span>
+                <span className="color-swatch" style={{ background: '#FFFDD0' }} title="Cream"></span>
+                <span className="color-swatch" style={{ background: '#FFF8E7' }} title="Champagne"></span>
               </div>
             </div>
           </div>
@@ -38,11 +38,11 @@ const DressCode: React.FC = () => {
               <div className="suggestion-icon">👗</div>
               <h3 className="suggestion-title">For Ladies</h3>
               <ul className="suggestion-list">
-                <li>Floral sundresses</li>
-                <li>Flowy maxi dresses</li>
-                <li>Comfortable sandals</li>
-                <li>Light, breathable fabrics</li>
-                <li>Summer accessories (hats, sunglasses)</li>
+                <li>White cocktail dress</li>
+                <li>Elegant white maxi dress</li>
+                <li>White linen or silk blouse with pants</li>
+                <li>Off-white or ivory sundress</li>
+                <li>Gold or pearl accessories</li>
               </ul>
             </div>
 
@@ -51,11 +51,11 @@ const DressCode: React.FC = () => {
               <div className="suggestion-icon">👔</div>
               <h3 className="suggestion-title">For Gentlemen</h3>
               <ul className="suggestion-list">
-                <li>Tropical/Hawaiian shirts</li>
-                <li>Light polo shirts</li>
-                <li>Khaki or chino shorts/pants</li>
-                <li>Comfortable loafers or sandals</li>
-                <li>Summer accessories optional</li>
+                <li>White polo or dress shirt</li>
+                <li>White linen blazer (optional)</li>
+                <li>White or beige chinos/slacks</li>
+                <li>Light-colored loafers or dress shoes</li>
+                <li>Minimal gold or silver accessories</li>
               </ul>
             </div>
           </div>
@@ -65,8 +65,9 @@ const DressCode: React.FC = () => {
         <div className="dress-code-note">
           <div className="note-icon">💡</div>
           <div className="note-content">
-            <p><strong>Note:</strong> Since we'll be at a resort with pool access, feel free to bring your swimwear! 
-            But please remember to have your party outfit for the program and dinner. Let's make it colorful and fun!</p>
+            <p><strong>Note:</strong> All white attire creates a beautiful, unified celebration atmosphere. 
+            Please avoid bright colors or patterns. Subtle off-white, ivory, or champagne shades are welcome. 
+            Let's make this milestone celebration picture perfect!</p>
           </div>
         </div>
       </div>

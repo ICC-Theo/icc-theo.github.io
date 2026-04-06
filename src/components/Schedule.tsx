@@ -7,27 +7,27 @@ const Schedule: React.FC = () => {
       <div className="container schedule-content">
         <h1 className="section-main-title">PARTY SCHEDULE</h1>
         <p className="section-subtitle">
-          Join us for a day of summer fun, great food, and wonderful memories!
+          Join us for a day of celebration, great food, and wonderful memories!
         </p>
         
         <div className="schedule-wrapper">
           {/* Welcome & Reception */}
           <div className="schedule-card">
-            <div className="schedule-icon">🍹</div>
+            <div className="schedule-icon">🥂</div>
             <div className="schedule-time">3:00 PM</div>
-            <h3 className="schedule-title">Welcome & Reception</h3>
+            <h3 className="schedule-title">Welcome Reception</h3>
             <p className="schedule-description">
-              Arrive, settle in, and enjoy refreshing summer drinks by the pool
+              Arrive, settle in, and enjoy refreshing drinks and appetizers
             </p>
           </div>
 
           {/* Games & Activities */}
           <div className="schedule-card">
-            <div className="schedule-icon">🎮</div>
+            <div className="schedule-icon">🎯</div>
             <div className="schedule-time">4:00 PM</div>
             <h3 className="schedule-title">Games & Activities</h3>
             <p className="schedule-description">
-              Fun summer games and activities for all ages
+              Fun games and activities for all ages to enjoy
             </p>
           </div>
 
