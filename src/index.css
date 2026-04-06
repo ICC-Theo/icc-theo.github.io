@@ -1362,17 +1362,17 @@ body {
 
 .photo-frame {
   background: #fff;
-  padding: 10px 10px 35px 10px;
+  padding: 12px 12px 40px 12px;
   box-shadow: 
     0 4px 15px rgba(0, 0, 0, 0.15),
     0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  max-width: 220px;
+  max-width: 400px;
 }
 
 .photo-frame img {
-  width: 200px;
-  height: 250px;
+  width: 360px;
+  height: 450px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -1396,15 +1396,15 @@ body {
     right: 2%;
   }
   .photo-frame {
-    padding: 6px 6px 28px 6px;
-    max-width: 160px;
+    padding: 10px 10px 32px 10px;
+    max-width: 280px;
   }
   .photo-frame img {
-    width: 140px;
-    height: 180px;
+    width: 250px;
+    height: 320px;
   }
   .photo-caption {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 
@@ -1416,62 +1416,72 @@ body {
     right: 1%;
   }
   .photo-frame {
-    padding: 5px 5px 24px 5px;
-    max-width: 120px;
+    padding: 8px 8px 28px 8px;
+    max-width: 200px;
   }
   .photo-frame img {
-    width: 100px;
-    height: 130px;
+    width: 180px;
+    height: 230px;
   }
   .photo-caption {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 700px) {
   .floating-photo.left {
-    left: 2px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-8deg);
+    left: 0;
+    top: 12%;
+    transform: rotate(-5deg);
   }
   
   .floating-photo.right {
-    right: 2px;
-    top: 50%;
-    transform: translateY(-50%) rotate(6deg);
+    right: 0;
+    top: 12%;
+    transform: rotate(5deg);
   }
   
   .floating-photo .photo-frame {
-    padding: 4px 4px 18px 4px;
-    max-width: 70px;
+    padding: 6px 6px 24px 6px;
+    max-width: 160px;
   }
   
   .floating-photo .photo-frame img {
-    width: 55px;
-    height: 70px;
+    width: 145px;
+    height: 220px;
     object-fit: cover;
     object-position: top center;
   }
   
   .floating-photo .photo-caption {
-    font-size: 0.5rem;
-    margin-top: 4px;
+    font-size: 0.7rem;
+    margin-top: 5px;
   }
 }
 
 @media (max-width: 480px) {
+  .floating-photo.left {
+    left: 0;
+    top: 10%;
+  }
+  
+  .floating-photo.right {
+    right: 0;
+    top: 10%;
+  }
+  
   .floating-photo .photo-frame {
-    padding: 3px 3px 15px 3px;
-    max-width: 60px;
+    padding: 5px 5px 20px 5px;
+    max-width: 140px;
   }
   
   .floating-photo .photo-frame img {
-    width: 48px;
-    height: 60px;
+    width: 125px;
+    height: 190px;
   }
   
   .floating-photo .photo-caption {
-    font-size: 0.45rem;
+    font-size: 0.65rem;
   }
 }
 
