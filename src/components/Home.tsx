@@ -27,7 +27,7 @@ const Home: React.FC = () => {
             <div className="summer-icon-header">🎂</div>
             <h2 className="std-month">May</h2>
             <div className="std-datetime">
-              <span className="std-day">Thursday</span>
+              <span className="std-day">Friday</span>
               <span className="std-date">01</span>
               <span className="std-time">3:00 PM</span>
             </div>

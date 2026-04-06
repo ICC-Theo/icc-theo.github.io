@@ -102,11 +102,39 @@ const Header: React.FC = () => {
   return (
     <>
       <header className={`header ${isOpening ? 'header-with-nav' : ''}`}>
+        {/* Floating Photo - Left Side (Desktop) */}
+        <div className="floating-photo left desktop-only">
+          <div className="photo-frame">
+            <img src="/Gallery/Photo2.jpg" alt="Enchong" />
+            <p className="photo-caption">Celebrating 50 Years!</p>
+          </div>
+        </div>
+        
+        {/* Floating Photo - Right Side (Desktop) */}
+        <div className="floating-photo right desktop-only">
+          <div className="photo-frame">
+            <img src="/Gallery/Photo10.jpg" alt="Enchong" />
+            <p className="photo-caption">Golden Milestone</p>
+          </div>
+        </div>
+        
         <div className="header-content">
           <div className="celebration-badge">50th</div>
           <h1>ENCHONG</h1>
           <p className="header-subtitle">Golden Birthday Celebration</p>
           <p className="header-date">05.01.2026</p>
+          
+          {/* Mobile Photos Container */}
+          <div className="mobile-photos">
+            <div className="photo-frame left-tilt">
+              <img src="/Gallery/Photo2.jpg" alt="Enchong" />
+              <p className="photo-caption">Celebrating 50 Years!</p>
+            </div>
+            <div className="photo-frame right-tilt">
+              <img src="/Gallery/Photo10.jpg" alt="Enchong" />
+              <p className="photo-caption">Golden Milestone</p>
+            </div>
+          </div>
           
           <div className="invitation-container">
             <div className="invitation-wrapper">
