@@ -1,0 +1,53 @@
+{
+  "name": "birthday-celebration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A summer-themed 50th birthday celebration website built with React and TypeScript",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:gh-pages": "npm run set-homepage && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "set-homepage": "npm pkg set homepage=https://icc-theo.github.io",
+    "remove-homepage": "npm pkg delete homepage",
+    "predeploy": "npm run build:gh-pages",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [
+    "birthday",
+    "celebration",
+    "react",
+    "typescript",
+    "summer"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
+    "build": "^0.1.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-scripts": "^5.0.1",
+    "run": "^1.5.0",
+    "typescript": "^4.9.5",
+    "typescriptnpm": "^1.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "homepage": "https://icc-theo.github.io"
+}
