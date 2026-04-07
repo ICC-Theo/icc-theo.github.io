@@ -15,6 +15,20 @@ const Gallery: React.FC = () => {
     { id: 8, src: '/Gallery/Photo8.jpg', caption: 'Memory 8' },
     { id: 9, src: '/Gallery/Photo9.jpg', caption: 'Memory 9' },
     { id: 10, src: '/Gallery/Photo10.jpg', caption: 'Memory 10' },
+    { id: 11, src: '/Memories/Memory1.jpg', caption: 'Memory 11' },
+    { id: 12, src: '/Memories/Memory2.jpg', caption: 'Memory 12' },
+    { id: 13, src: '/Memories/Memory3.jpg', caption: 'Memory 13' },
+    { id: 14, src: '/Memories/Memory4.jpg', caption: 'Memory 14' },
+    { id: 15, src: '/Memories/Memory5.jpg', caption: 'Memory 15' },
+    { id: 16, src: '/Memories/Memory6.jpg', caption: 'Memory 16' },
+    { id: 17, src: '/Memories/Memory7.jpg', caption: 'Memory 17' },
+    { id: 18, src: '/Memories/Memory8.jpg', caption: 'Memory 18' },
+    { id: 19, src: '/Memories/Memory9.jpg', caption: 'Memory 19' },
+    { id: 20, src: '/Memories/Memory10.jpg', caption: 'Memory 20' },
+    { id: 21, src: '/Memories/Memory11.jpg', caption: 'Memory 21' },
+    { id: 22, src: '/Memories/Memory12.jpg', caption: 'Memory 22' },
+    { id: 23, src: '/Memories/Memory13.jpg', caption: 'Memory 23' },
+    { id: 24, src: '/Memories/Memory14.jpg', caption: 'Memory 24' },
   ];
 
   return (
